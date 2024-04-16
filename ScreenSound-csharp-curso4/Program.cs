@@ -18,7 +18,14 @@ using (HttpClient client = new HttpClient())
         // LinqFilter.FiltrarTodosOsGenerosMusicais(musicas);
         // LinqOrder.ExibirTodosOsArtistasOrdenados(musicas);
         // LinqFilter.FiltrarArtistasPorGeneroMusical(musicas, "hip hop");
-        LinqFilter.FiltrarAsMusicasPorArtista(musicas, "Drake");
+        // LinqFilter.FiltrarAsMusicasPorArtista(musicas, "Drake");
+
+        Playlist playlist = new Playlist("Drake Only");
+
+        playlist.AdicionarMusicas(musicas.FindAll(m => m.Artista == "Drake").ToList());
+        playlist.ExibirMusicasPlaylist();
+
+        playlist.GerarArquivoJson();
     }
     catch (Exception e)
     {
